@@ -1,0 +1,27 @@
+--- 
+title: "The Final War"
+subtitle: "Book 2"
+author: "Beckett Stephens"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+classoption: oneside
+description: "My book about adventures in a video game named Minecraft."
+cover-image: "img/final-war.jpg"
+favicon: "img/mc-favicon.ico"
+github-repo: "nwstephens/the-final-war"
+---
+
+# Preface {-}
+
+<center>![final-war](img/final-war.jpg){width=600px}</center>
+
+This book is about my adventures in a video game named Minecraft.
+
+# About the Author {-}
+
+Beckett Stephens is an aspiring author and illustrator. *The Final War* is his first published work. Beckett also loves Minecraft, Lego's, and Transformers, as well as making up endless stories while he walks. He currently lives in Maryland with his younger brother.
+
+# Acknowledgements {-}
+
+Thanks to Mom for helping me edit *The Final War*. And thanks to Dad for helping me publish it online. Also, thanks to Minecraft community for the inspiration that helped me make this book.
