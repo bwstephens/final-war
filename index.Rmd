@@ -1,6 +1,5 @@
 --- 
-title: "The Final War"
-subtitle: "Book 2"
+title: "Book 2: The Final War"
 author: "Beckett Stephens"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
