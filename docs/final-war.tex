@@ -1,4 +1,7 @@
-\documentclass[oneside]{book}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[12pt,oneside]{krantz}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -6,32 +9,34 @@
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
+  \usepackage{unicode-math}
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
 \usepackage{hyperref}
-\hypersetup{unicode=true,
+\hypersetup{
             pdftitle={The Final War},
             pdfauthor={Beckett Stephens},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{plainnat}
 \usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -41,12 +46,6 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -61,33 +60,22 @@
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-  \title{The Final War}
-  \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-\subtitle{Book 2}
-  \author{Beckett Stephens}
-  \preauthor{\centering\large\emph}
-  \postauthor{\par}
-  \predate{\centering\large\emph}
-  \postdate{\par}
-  \date{2018-03-31}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 
 \usepackage{booktabs}
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\title{The Final War}
+\providecommand{\subtitle}[1]{}
+\subtitle{Book 2}
+\author{Beckett Stephens}
+\date{2019-02-10}
 
 \begin{document}
 \maketitle
@@ -96,29 +84,33 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\chapter*{Preface}\label{preface}
-\addcontentsline{toc}{chapter}{Preface}
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
 
-\includegraphics[width=6.25000in]{img/final-war.jpg}
+
+\includegraphics[width=4.6875in,height=\textheight]{img/final-war.jpg}
 
 This book is about my adventures in a video game named Minecraft.
 
-\chapter*{About the Author}\label{about-the-author}
-\addcontentsline{toc}{chapter}{About the Author}
+\hypertarget{about-the-author}{%
+\chapter*{About the Author}\label{about-the-author}}
+
 
 Beckett Stephens is an aspiring author and illustrator. \emph{The Final
 War} is his first published work. Beckett also loves Minecraft, Lego's,
 and Transformers, as well as making up endless stories while he walks.
 He currently lives in Maryland with his younger brother.
 
-\chapter*{Acknowledgements}\label{acknowledgements}
-\addcontentsline{toc}{chapter}{Acknowledgements}
+\hypertarget{acknowledgements}{%
+\chapter*{Acknowledgements}\label{acknowledgements}}
+
 
 Thanks to Mom for helping me edit \emph{The Final War}. And thanks to
 Dad for helping me publish it online. Also, thanks to Minecraft
 community for the inspiration that helped me make this book.
 
-\chapter{He Returns}\label{he-returns}
+\hypertarget{he-returns}{%
+\chapter{He Returns}\label{he-returns}}
 
 One day I was exploring when I saw a witch flying down and was heading
 towards my base! The witch was too fast. She got past the iron golems. I
@@ -151,12 +143,13 @@ Cindy said, ``Finally we got the command block map of power.''
 
 While they were chatting an enderman was listening without permission.
 
-\chapter{Should I be good?}\label{should-i-be-good}
+\hypertarget{should-i-be-good}{%
+\chapter{Should I be good?}\label{should-i-be-good}}
 
 It was night and all of Herobrine's endermen were gone. The meeting was
 over, so an enderman took the map and brought it to me.
 
-\includegraphics[width=2.60417in]{img/table-and-map.jpg}
+\includegraphics[width=2.60417in,height=\textheight]{img/table-and-map.jpg}
 
 I was starving. The enderman gave me 16 cakes, and I ate three of them.
 The enderman also gave me the map. I said, ``Thanks, but I thought you
@@ -165,7 +158,7 @@ were bad.''
 The enderman said, ``I want to be a better enderman, and, by the way, my
 name is Malek.''
 
-\includegraphics[width=5.20833in]{img/malek-beckett.jpg}
+\includegraphics[width=5.20833in,height=\textheight]{img/malek-beckett.jpg}
 
 \textbf{\emph{In Herobrine's base\ldots{}}}
 
@@ -186,9 +179,12 @@ Everyone was there to talk about their plan. Herobrine said,
 ``And I'll get the command block. We need all of these to rule the
 world!''
 
-\includegraphics[width=2.08333in]{img/crystals.jpg}
+\includegraphics[width=2.08333in,height=\textheight]{img/crystals.jpg}
 
-\chapter{The command block}\label{the-command-block}
+\hypertarget{the-command-block}{%
+\chapter{The command block}\label{the-command-block}}
+
+\includegraphics[width=4.6875in,height=\textheight]{img/nooooo.jpg}
 
 Malek and I trained for seven days, and then I went to a village to pass
 out flyers to every house. The flyers said, ``Herobrine is back, and we
@@ -218,9 +214,8 @@ I said, ``Nooooooooo!''
 
 And then I said, ``I will get Malek and Felix back.''
 
-\includegraphics[width=6.25000in]{img/nooooo.jpg}
-
-\chapter{The Rescue}\label{the-rescue}
+\hypertarget{the-rescue}{%
+\chapter{The Rescue}\label{the-rescue}}
 
 ``I better keep this safe,'' I said. And I put the command block and the
 other crystals and gems into an undectabale lair.
@@ -251,7 +246,8 @@ Malek woke up and said, ``Thank you for saving me.''
 
 That is when I teleported everyone out.
 
-\chapter{Herobrine's Lightning}\label{herobrines-lightning}
+\hypertarget{herobrines-lightning}{%
+\chapter{Herobrine's Lightning}\label{herobrines-lightning}}
 
 \textbf{\emph{In the end\ldots{}}}
 
@@ -260,7 +256,7 @@ They brought it to Herobrine and he was so pleased. He had all he wanted
 to make him super powerful, so he did. He got two new superpowers. One
 of them was dark lightning, the other was teleportation punch.
 
-\includegraphics[width=1.04167in]{img/dark-lightning.jpg}
+\includegraphics[width=1.04167in,height=\textheight]{img/dark-lightning.jpg}
 
 \textbf{\emph{At My Base\ldots{}}}
 
@@ -273,7 +269,7 @@ A portal opened and Herobrine came out.
 I said, ``Ready, Go!'' I put on the armor that Bob was making, and then
 my whole team went out to fight Herobrine.
 
-\includegraphics[width=6.25000in]{img/bob.jpg}
+\includegraphics[width=4.6875in,height=\textheight]{img/bob.jpg}
 
 Malek and Bob and Felix finished the battle. I had a big scar on my
 face. I couldn't get out to battle for a while.
@@ -289,7 +285,8 @@ tons of creepers. I said,
 
 ``Could it be? No way!''
 
-\chapter{King Creeper}\label{king-creeper}
+\hypertarget{king-creeper}{%
+\chapter{King Creeper}\label{king-creeper}}
 
 There -- on a throne -- was King Creeper. He was green and black,
 wearing a crown on his head, and he had no arms. King Creeper used to be
@@ -308,19 +305,22 @@ I said, ``Yes.''
 We left the cave and took King Creeper with his fellow creepers back to
 our base.
 
-\includegraphics[width=1.82292in]{img/king-creeper.jpg}
+\includegraphics[width=1.82292in,height=\textheight]{img/king-creeper.jpg}
 
 When we returned to our base, King Creeper told us this story,
 
 ``I left the tower to fight players. I ran and ran until I fell into a
 cave, and I never came out again!''
 
+\clearpage
+
 King Creeper's fellow creepers didn't like where this was going. They
 did not want King Creaper to join the rebellion, so they decided to kill
 him. They all decided to blow up my base. So they
 did\ldots{}\textbf{3-2-1-BOOM!!}
 
-\chapter{Alex to the Rescue}\label{alex-to-the-rescue}
+\hypertarget{alex-to-the-rescue}{%
+\chapter{Alex to the Rescue}\label{alex-to-the-rescue}}
 
 All of us are hurt then someone came out and saved us.
 
@@ -333,7 +333,7 @@ were recovering from the blast, Herobrine got all of the crystals.
 
 He said, ``Yes, yes.''
 
-\includegraphics[width=4.16667in]{img/alex-herobrine.jpg}
+\includegraphics[width=4.16667in,height=\textheight]{img/alex-herobrine.jpg}
 
 \textbf{\emph{Back at Our New Base\ldots{}}}
 
@@ -344,7 +344,7 @@ touch both of Herobrine's eyes then he will die.
 
 Then a portal opened and all of the generals came out.
 
-\includegraphics[width=6.25000in]{img/herobrine.jpg}
+\includegraphics[width=4.6875in,height=\textheight]{img/herobrine.jpg}
 
 I said, ``Let's fight!''
 
@@ -355,7 +355,8 @@ Malek tried to teleport to Herobrine, but Herobrine was too powerful.
 
 Herobrine said, ``All of the magic is mine. Ha, ha, ha.''
 
-\chapter{Herobrine's battle}\label{herobrines-battle}
+\hypertarget{herobrines-battle}{%
+\chapter{Herobrine's battle}\label{herobrines-battle}}
 
 Alex jumped to Endy, but Endy knocked Alex back. ``Ah!'' Alex said as
 she fell down next to Felix and Malek. Now, Bob and I were the only ones
@@ -394,14 +395,14 @@ reward, we will now save Beckett.''
 
 Then I came back to life too, and I said, ``Thank you for saving me!''
 
-\chapter*{The End}\label{the-end}
-\addcontentsline{toc}{chapter}{The End}
+\hypertarget{the-end}{%
+\chapter*{The End}\label{the-end}}
+
 
 Meanwhile, in the Nether someone said,
 
 ``It's my time to raise an army.''
 
 \textbf{Book 3\ldots{}coming soon}
-
 
 \end{document}
